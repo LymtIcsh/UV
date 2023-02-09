@@ -44,6 +44,8 @@ public class TTPSFeetIK : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float footToIKPositionSpeed = 0.5f;
 
+    public bool useAnimCurve = true;
+
     public string leftFootAnimVariableName = "LeftFootIKCurve";
 
     public string rightFootAnimVariableName = "RightFootIKCurve";
@@ -90,13 +92,13 @@ public class TTPSFeetIK : MonoBehaviour
         if (enableFeetIK)
         {
             MovePelvisHeight();
-            tps.at.SetIKPositionWeight(AvatarIKGoal.RightFoot, tps.at.GetFloat(rightFootAnimVariableName));
-            tps.at.SetIKPositionWeight(AvatarIKGoal.LeftFoot, tps.at.GetFloat(leftFootAnimVariableName));
+            tps.at.SetIKPositionWeight(AvatarIKGoal.RightFoot, useAnimCurve ? tps.at.GetFloat(rightFootAnimVariableName) : 1.0f);
+            tps.at.SetIKPositionWeight(AvatarIKGoal.LeftFoot, useAnimCurve ? tps.at.GetFloat(leftFootAnimVariableName) : 1.0f);
 
             if (useProIKFeature)
             {
-                tps.at.SetIKRotationWeight(AvatarIKGoal.RightFoot, tps.at.GetFloat(rightFootAnimVariableName));
-                tps.at.SetIKRotationWeight(AvatarIKGoal.LeftFoot, tps.at.GetFloat(leftFootAnimVariableName));
+                tps.at.SetIKRotationWeight(AvatarIKGoal.RightFoot, useAnimCurve ? tps.at.GetFloat(rightFootAnimVariableName) : 1.0f);
+                tps.at.SetIKRotationWeight(AvatarIKGoal.LeftFoot, useAnimCurve ? tps.at.GetFloat(leftFootAnimVariableName) : 1.0f);
             }
 
             MoveFootToIKPoint(AvatarIKGoal.RightFoot, rightFootIKPosition, rightFootIKRotation, ref lastRightFootPositionY);

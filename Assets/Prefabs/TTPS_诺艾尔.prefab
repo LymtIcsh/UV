@@ -2240,7 +2240,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602962262731667308}
-  m_LocalRotation: {x: 0.06837896, y: 0.00000003565983, z: -0.0000000024441027, w: 0.99765944}
+  m_LocalRotation: {x: 0.068378955, y: -0.000000034876525, z: 0.000000002390415, w: 0.99765944}
   m_LocalPosition: {x: 0, y: 2, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3039,7 +3039,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8667702671268660498}
-  m_LocalRotation: {x: 0.06837895, y: 0.00000001823037, z: -0.000000001249498, w: 0.99765944}
+  m_LocalRotation: {x: 0.06837894, y: -0.000000016646153, z: 0.0000000011409168, w: 0.99765944}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4397,6 +4397,7 @@ MonoBehaviour:
   pelvisOffset: 0
   pelvisUpAndDownSpeed: 0.28
   footToIKPositionSpeed: 0.5
+  useAnimCurve: 0
   leftFootAnimVariableName: LeftFootIKCurve
   rightFootAnimVariableName: RightFootIKCurve
   useProIKFeature: 1
