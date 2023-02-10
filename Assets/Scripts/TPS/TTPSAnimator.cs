@@ -6,7 +6,7 @@ public class TTPSAnimator : MonoBehaviour
 {
     public enum TDirection
     {
-        Idle,
+        InPlace,
         W,
         S,
         A,
@@ -20,7 +20,7 @@ public class TTPSAnimator : MonoBehaviour
     public TTPSCharacter tps;
 
     [HideInInspector]
-    public TDirection currentDirection = TDirection.Idle;
+    public TDirection currentDirection = TDirection.InPlace;
 
     private void Update()
     {
@@ -32,7 +32,7 @@ public class TTPSAnimator : MonoBehaviour
     {
         if (TInputManager.Instance.movement == Vector2.zero)
         {
-            currentDirection = TDirection.Idle;
+            currentDirection = TDirection.InPlace;
         }
         else if (TInputManager.Instance.movement.y > 0.85f)
         {
@@ -68,7 +68,7 @@ public class TTPSAnimator : MonoBehaviour
         }
         else
         {
-            currentDirection = TDirection.Idle;
+            currentDirection = TDirection.InPlace;
         }
     }
 
