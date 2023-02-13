@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af773848d289f04b83a8cba090f883e, type: 3}
   m_Name: MxMSettings
   m_EditorClassIdentifier: 
-  ActiveComposite: {fileID: 114643067491319622, guid: b2545d974f3f54341949c308a89d1696,
-    type: 2}
+  ActiveComposite: {fileID: 114643067491319622, guid: b2545d974f3f54341949c308a89d1696, type: 2}
   ActiveIdleSet: {fileID: 0}
   ActiveBlendSpace: {fileID: 0}
+  HelpActive: 0
