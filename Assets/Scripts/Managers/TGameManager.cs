@@ -14,6 +14,6 @@ public class TGameManager : TSingleton<TGameManager>
     private void InitSetting()
     {
         Application.targetFrameRate = 144;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
