@@ -10,12 +10,23 @@ public class TCharacterTransform : MonoBehaviour
     public float bodyRotateSmoothTime = 0.2f;
 
     private float cameraRotateVelocity;
-
     public Animator at;
+
+    public CharacterController cc;
+
+    [HideInInspector]
+    public float verticalVelocity;
+
+    [Range(1.0f, 10.0f)]
+    public float jumpVelocity = 4.0f;
+
+    public float gravity = -9.8f;
 
     private void Update()
     {
         UpdateBodyRotation();
+        CalculateGravity();
+        Jump();
     }
     private void UpdateBodyRotation()
     {
@@ -27,10 +38,30 @@ public class TCharacterTransform : MonoBehaviour
         }
     }
 
+    private void CalculateGravity()
+    {
+        if (cc.isGrounded)
+        {
+            verticalVelocity = 0.0f;
+        }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime;
+        }
+    }
+
+    private void Jump()
+    {
+        if (TInputManager.Instance.isJump && cc.isGrounded)
+        {
+            // verticalVelocity = jumpVelocity;
+        }
+    }
+
     private void OnAnimatorMove()
     {
         Vector3 m = at.deltaPosition;
-        m.y = 0.0f;
-        transform.Translate(m, Space.Self);
+        m.y = verticalVelocity * Time.deltaTime;
+        cc.Move(m);
     }
 }

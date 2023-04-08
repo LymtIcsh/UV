@@ -29,10 +29,10 @@ public class TFeetIK : MonoBehaviour
     public bool enableFeetIK = true;
 
     [Range(0.0f, 2.0f)]
-    public float heightFromGroundRaycast = 1.14f;
+    public float heightFromGroundRaycast = 0.3f;
 
     [Range(0.0f, 2.0f)]
-    public float raycastDistance = 1.5f;
+    public float raycastDistance = 0.24f;
 
     public LayerMask environmentLayer;
 
@@ -54,7 +54,7 @@ public class TFeetIK : MonoBehaviour
 
     public bool showSolverDebug = true;
 
-    public Color debugLineColor = Color.red;
+    public Color debugLineColor = Color.black;
 
     #endregion
 
