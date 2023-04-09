@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 234386607524114727}
   - component: {fileID: 7486294159902868544}
   - component: {fileID: 7661020298607996932}
+  - component: {fileID: 4317904333414434147}
   m_Layer: 0
   m_Name: TManager
   m_TagString: Untagged
@@ -137,3 +138,28 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &4317904333414434147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416651953471647503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1446143d2dd8ec9418e07f18d96fadd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateTime:
+    updatePerSeccond: 90
+    updateMode: 0
+    updateLocation: 0
+    futurePredictionRate: 1
+    updateBoneScale: 0
+  useFasterWrite: 1
+  OnPreUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostUpdate:
+    m_PersistentCalls:
+      m_Calls: []
