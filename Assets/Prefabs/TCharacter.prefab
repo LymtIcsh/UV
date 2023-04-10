@@ -3562,7 +3562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3002651232527380889}
-  m_LocalRotation: {x: 0.19878995, y: -0.000000018853381, z: 0.000000003824185, w: 0.98004216}
+  m_LocalRotation: {x: 0.19878995, y: 0.000000018853381, z: -0.000000003824185, w: 0.98004216}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3804,7 +3804,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3002651232892471570}
-  m_LocalRotation: {x: 0.19878995, y: -0.000000018853381, z: 0.0000000038241854, w: 0.9800421}
+  m_LocalRotation: {x: 0.19878995, y: 0.000000018853381, z: -0.0000000038241854, w: 0.9800421}
   m_LocalPosition: {x: 0, y: 2, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3886,11 +3886,11 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
-  m_Dithering: 0
+  m_Dithering: 1
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_RequiresDepthTexture: 0
