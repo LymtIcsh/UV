@@ -12,21 +12,19 @@ public class TCharacterTransform : MonoBehaviour
     private float cameraRotateVelocity;
     public Animator at;
 
-    public CharacterController cc;
+    public Rigidbody rb;
 
-    [HideInInspector]
-    public float verticalVelocity;
+    [Range(1.0f, 500.0f)]
+    public float jumpForce = 100.0f;
 
-    [Range(1.0f, 10.0f)]
-    public float jumpVelocity = 4.0f;
-
-    public float gravity = -9.8f;
+    private void Awake()
+    {
+        TInputManager.Instance.Jump += this.OnJump;
+    }
 
     private void Update()
     {
         UpdateBodyRotation();
-        CalculateGravity();
-        Jump();
     }
     private void UpdateBodyRotation()
     {
@@ -38,30 +36,18 @@ public class TCharacterTransform : MonoBehaviour
         }
     }
 
-    private void CalculateGravity()
+    private void OnJump(TInputManager.TInputKeyType type)
     {
-        if (cc.isGrounded)
+        if (type == TInputManager.TInputKeyType.Down)
         {
-            verticalVelocity = 0.0f;
-        }
-        else
-        {
-            verticalVelocity += gravity * Time.deltaTime;
-        }
-    }
-
-    private void Jump()
-    {
-        if (TInputManager.Instance.isJump && cc.isGrounded)
-        {
-            // verticalVelocity = jumpVelocity;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
     private void OnAnimatorMove()
     {
         Vector3 m = at.deltaPosition;
-        m.y = verticalVelocity * Time.deltaTime;
-        cc.Move(m);
+        m.y = 0.0f;
+        transform.Translate(m, Space.World);
     }
 }
