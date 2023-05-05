@@ -412,6 +412,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 679879343041383157, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679879343041383157, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679879343041383157, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 1416651953471647496, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -459,6 +471,34 @@ PrefabInstance:
     - target: {fileID: 1416651953471647503, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
       propertyPath: m_Name
       value: TManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 721936ba247cdbc42bdb5db52b591a86, type: 3}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836188316674964372, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
