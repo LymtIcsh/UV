@@ -67,60 +67,49 @@ public class TSceneManager : TSingleton<TSceneManager>
         return s != null ? s.name : "Start";
     }
 
-    private IEnumerator SwitchScene(TSceneKey key, Action OnFinish, bool autoEnter)
+    private IEnumerator SwitchScene(string name, Action OnFinish, bool autoEnter)
     {
+
         ShowCanvas();
-        string name = GetNameByKey(key);
         Rect parentRect = processImage.rectTransform.rect;
-        if (name == currentSceneName)
+        currentSceneName = name;
+        var load = SceneManager.LoadSceneAsync(name);
+        load.allowSceneActivation = false;
+        while (!load.isDone)
         {
-            yield break;
-        }
-        else
-        {
-            currentSceneName = name;
-            var load = SceneManager.LoadSceneAsync(name);
-            load.allowSceneActivation = false;
-            while (!load.isDone)
+            if (load.progress < 0.9f)
             {
-                if (load.progress < 0.9f)
+                enterPercent.text = $"{load.progress * 100.0f}";
+                currentImage.rectTransform.sizeDelta = new Vector2(parentRect.width * load.progress, parentRect.height);
+            }
+            else
+            {
+                currentImage.rectTransform.sizeDelta = parentRect.size;
+                enterPercent.text = "100.0%";
+                if (autoEnter)
                 {
-                    enterPercent.text = $"{load.progress * 100.0f}";
-                    currentImage.rectTransform.sizeDelta = new Vector2(parentRect.width * load.progress, parentRect.height);
+                    yield return new WaitForSeconds(1.0f);
+                    load.allowSceneActivation = true;
+                    yield return null;
+                    OnFinish();
+                    ResetCanvas();
+                    yield break;
                 }
                 else
                 {
-                    currentImage.rectTransform.sizeDelta = parentRect.size;
-                }
-
-                if (load.progress >= 0.9f)
-                {
-                    enterPercent.text = "100.0%";
-                    if (autoEnter)
+                    enterText.enabled = true;
+                    if (Keyboard.current.spaceKey.isPressed)
                     {
-                        yield return new WaitForSeconds(1.0f);
                         load.allowSceneActivation = true;
                         yield return null;
                         OnFinish();
                         ResetCanvas();
                         yield break;
                     }
-                    else
-                    {
-                        enterText.enabled = true;
-                        if (Keyboard.current.spaceKey.isPressed)
-                        {
-                            load.allowSceneActivation = true;
-                            yield return null;
-                            OnFinish();
-                            ResetCanvas();
-                            yield break;
-                        }
 
-                    }
                 }
-                yield return null;
             }
+            yield return null;
         }
     }
 
@@ -130,9 +119,18 @@ public class TSceneManager : TSingleton<TSceneManager>
     /// <param name="key">场景枚举</param>
     /// <param name="Enter">是否加载完成后自动进入</param>
     /// <param name="OnFinish">加载完成后回调</param>
+    /// <param name="autoEnter">是否自动进入</param>
     public void LoadScene(in TSceneKey key, in Action OnFinish, in bool autoEnter)
     {
-        StartCoroutine(SwitchScene(key, OnFinish, autoEnter));
+        string name = GetNameByKey(key);
+        if (name == currentSceneName)
+        {
+            Debug.Log("不可加载同场景！");
+        }
+        else
+        {
+            StartCoroutine(SwitchScene(name, OnFinish, autoEnter));
+        }
     }
 }
 

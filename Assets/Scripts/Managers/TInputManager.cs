@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class TInputManager : TSingleton<TInputManager>
 {
 
