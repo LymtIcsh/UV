@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 可交互的基类
+/// 友好的
 /// </summary>
-public class Entity : MonoBehaviour
+public class TFriendly : TEntity
 {
 
 }

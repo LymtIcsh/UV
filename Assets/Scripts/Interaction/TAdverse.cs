@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 中立的
 /// </summary>
-public class Adverse : Entity
+public class TAdverse : TEntity
 {
 
 }

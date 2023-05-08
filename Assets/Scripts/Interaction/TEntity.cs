@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 有害的
+/// 可交互的基类
 /// </summary>
-public class Neutral : Entity
+public class TEntity : MonoBehaviour
 {
 
 }

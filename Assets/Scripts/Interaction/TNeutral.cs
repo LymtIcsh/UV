@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 友好的
+/// 有害的
 /// </summary>
-public class Friendly : Entity
+public class TNeutral : TEntity
 {
 
 }
