@@ -44,6 +44,9 @@ public class TInputManager : TSingleton<TInputManager>
     [HideInInspector]
     public Vector2 rotate;
 
+    [HideInInspector]
+    public float scroll;
+
     protected override void Awake()
     {
         base.Awake();
@@ -111,5 +114,6 @@ public class TInputManager : TSingleton<TInputManager>
     {
         movement = inputActions.General.Movement.ReadValue<Vector2>();
         rotate = inputActions.General.Rotate.ReadValue<Vector2>();
+        scroll = inputActions.General.Scroll.ReadValue<float>();
     }
 }

@@ -91,10 +91,10 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""Scroll"",
                     ""type"": ""Value"",
-                    ""id"": ""7035b16c-e512-4c2e-ae17-3a715e276d90"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""aee3edab-e7dc-4705-ab10-08d9e761ebac"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -267,59 +267,15 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""3f77b2c4-20a2-4766-9626-3e6312a9319c"",
-                    ""path"": ""2DVector(mode=2)"",
+                    ""name"": """",
+                    ""id"": ""f64de06d-3260-46ac-aabc-bf0eac6fab85"",
+                    ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": true,
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4000a344-6310-4877-b51d-14343f4fa6f5"",
-                    ""path"": ""<Mouse>/scroll/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""d9915eed-136d-4653-8fae-693092e07ea3"",
-                    ""path"": ""<Mouse>/scroll/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""0fd99cfe-379b-4406-b1e6-8b93671feed9"",
-                    ""path"": ""<Mouse>/delta/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""3812c077-dbbe-4ace-8d12-f8390c99b0c6"",
-                    ""path"": ""<Mouse>/delta/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -923,7 +879,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         m_General_Rotate = m_General.FindAction("Rotate", throwIfNotFound: true);
         m_General_Around = m_General.FindAction("Around", throwIfNotFound: true);
         m_General_Slow = m_General.FindAction("Slow", throwIfNotFound: true);
-        m_General_Look = m_General.FindAction("Look", throwIfNotFound: true);
+        m_General_Scroll = m_General.FindAction("Scroll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,7 +961,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Rotate;
     private readonly InputAction m_General_Around;
     private readonly InputAction m_General_Slow;
-    private readonly InputAction m_General_Look;
+    private readonly InputAction m_General_Scroll;
     public struct GeneralActions
     {
         private @TInputActions m_Wrapper;
@@ -1017,7 +973,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_General_Rotate;
         public InputAction @Around => m_Wrapper.m_General_Around;
         public InputAction @Slow => m_Wrapper.m_General_Slow;
-        public InputAction @Look => m_Wrapper.m_General_Look;
+        public InputAction @Scroll => m_Wrapper.m_General_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1048,9 +1004,9 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                 @Slow.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnSlow;
                 @Slow.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnSlow;
                 @Slow.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnSlow;
-                @Look.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnLook;
+                @Scroll.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
+                @Scroll.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
+                @Scroll.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
             }
             m_Wrapper.m_GeneralActionsCallbackInterface = instance;
             if (instance != null)
@@ -1076,9 +1032,9 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                 @Slow.started += instance.OnSlow;
                 @Slow.performed += instance.OnSlow;
                 @Slow.canceled += instance.OnSlow;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
             }
         }
     }
@@ -1230,7 +1186,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnAround(InputAction.CallbackContext context);
         void OnSlow(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
