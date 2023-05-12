@@ -24,14 +24,6 @@ public class TSceneManager : TSingleton<TSceneManager>
 
     public List<TSceneEntity> scenes;
 
-    private void Update()
-    {
-        if (Keyboard.current.tKey.wasReleasedThisFrame)
-        {
-            LoadScene(TSceneKey.World, () => { }, false);
-        }
-    }
-
     protected override void Awake()
     {
         base.Awake();
@@ -91,8 +83,8 @@ public class TSceneManager : TSingleton<TSceneManager>
                     yield return new WaitForSeconds(1.0f);
                     load.allowSceneActivation = true;
                     yield return null;
-                    OnFinish();
                     ResetCanvas();
+                    OnFinish();
                     yield break;
                 }
                 else
@@ -102,8 +94,8 @@ public class TSceneManager : TSingleton<TSceneManager>
                     {
                         load.allowSceneActivation = true;
                         yield return null;
-                        OnFinish();
                         ResetCanvas();
+                        OnFinish();
                         yield break;
                     }
 
@@ -156,5 +148,5 @@ public enum TSceneKey
     /// 主场景
     /// </summary>
     [Tooltip("主世界")]
-    World,
+    Fracture,
 }
