@@ -60,6 +60,8 @@ public class TFeetIK : MonoBehaviour
 
     #region Hands
 
+    public bool adjustHandsHeight = true;
+
     private bool isOrigin = true;
     private float originBodyPositionY;
 
@@ -172,9 +174,13 @@ public class TFeetIK : MonoBehaviour
 
     private void MoveHandsHeight(AvatarIKGoal hand)
     {
-        Vector3 targetIKPosition = at.GetIKPosition(hand);
-        Vector3 targetBodyPosition = transform.InverseTransformPoint(at.bodyPosition);
-        at.SetIKPositionWeight(hand, 1.0f);
-        at.SetIKPosition(hand, new Vector3(targetIKPosition.x, targetIKPosition.y - (originBodyPositionY - targetBodyPosition.y), targetIKPosition.z));
+        if (adjustHandsHeight)
+        {
+            Vector3 targetIKPosition = at.GetIKPosition(hand);
+            Vector3 targetBodyPosition = transform.InverseTransformPoint(at.bodyPosition);
+            at.SetIKPositionWeight(hand, 1.0f);
+            at.SetIKPosition(hand, new Vector3(targetIKPosition.x, targetIKPosition.y - (originBodyPositionY - targetBodyPosition.y), targetIKPosition.z));
+        }
+
     }
 }
