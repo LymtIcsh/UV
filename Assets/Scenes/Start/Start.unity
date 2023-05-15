@@ -811,10 +811,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6655155864165953854, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9ef543a58f4db84290f0d3c7e42823d, type: 3}
 --- !u!1 &1424362003

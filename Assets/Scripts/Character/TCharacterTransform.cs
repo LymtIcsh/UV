@@ -17,7 +17,7 @@ public class TCharacterTransform : MonoBehaviour
     [Range(1.0f, 500.0f)]
     public float jumpForce = 100.0f;
 
-    private void Awake()
+    private void Start()
     {
         TInputManager.Instance.Jump += this.OnJump;
     }

@@ -98,6 +98,15 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Compass"",
+                    ""type"": ""Button"",
+                    ""id"": ""e22317a1-ee90-4a70-a3cb-d3c08cceca11"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +283,17 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9fa690b-016d-495a-abd7-1b31207fb5c3"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Compass"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -880,6 +900,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         m_General_Around = m_General.FindAction("Around", throwIfNotFound: true);
         m_General_Slow = m_General.FindAction("Slow", throwIfNotFound: true);
         m_General_Scroll = m_General.FindAction("Scroll", throwIfNotFound: true);
+        m_General_Compass = m_General.FindAction("Compass", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -962,6 +983,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Around;
     private readonly InputAction m_General_Slow;
     private readonly InputAction m_General_Scroll;
+    private readonly InputAction m_General_Compass;
     public struct GeneralActions
     {
         private @TInputActions m_Wrapper;
@@ -974,6 +996,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         public InputAction @Around => m_Wrapper.m_General_Around;
         public InputAction @Slow => m_Wrapper.m_General_Slow;
         public InputAction @Scroll => m_Wrapper.m_General_Scroll;
+        public InputAction @Compass => m_Wrapper.m_General_Compass;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1007,6 +1030,9 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                 @Scroll.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnScroll;
+                @Compass.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnCompass;
+                @Compass.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnCompass;
+                @Compass.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnCompass;
             }
             m_Wrapper.m_GeneralActionsCallbackInterface = instance;
             if (instance != null)
@@ -1035,6 +1061,9 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
+                @Compass.started += instance.OnCompass;
+                @Compass.performed += instance.OnCompass;
+                @Compass.canceled += instance.OnCompass;
             }
         }
     }
@@ -1187,6 +1216,7 @@ public partial class @TInputActions : IInputActionCollection2, IDisposable
         void OnAround(InputAction.CallbackContext context);
         void OnSlow(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnCompass(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

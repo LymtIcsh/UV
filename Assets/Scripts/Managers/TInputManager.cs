@@ -39,6 +39,11 @@ public class TInputManager : TSingleton<TInputManager>
     public Action<TInputKeyType> Slow;
 
     [HideInInspector]
+    public bool isCompass;
+
+    public Action<TInputKeyType> Compass;
+
+    [HideInInspector]
     public Vector2 movement;
 
     [HideInInspector]
@@ -78,6 +83,8 @@ public class TInputManager : TSingleton<TInputManager>
         inputActions.General.Around.canceled += OnAround;
         inputActions.General.Slow.performed += OnSlow;
         inputActions.General.Slow.canceled += OnSlow;
+        inputActions.General.Compass.performed += OnCompass;
+        inputActions.General.Compass.canceled += OnCompass;
     }
 
     private void OnJump(InputAction.CallbackContext ctx)
@@ -108,6 +115,12 @@ public class TInputManager : TSingleton<TInputManager>
     {
         isSlow = ctx.performed;
         Slow?.Invoke(ctx.performed ? TInputKeyType.Down : TInputKeyType.Up);
+    }
+
+    private void OnCompass(InputAction.CallbackContext ctx)
+    {
+        isCompass = ctx.performed;
+        Compass?.Invoke(ctx.performed ? TInputKeyType.Down : TInputKeyType.Up);
     }
 
     private void ReadValues()

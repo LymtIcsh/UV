@@ -16,6 +16,7 @@ public class TSceneManager : TSingleton<TSceneManager>
 
     [SerializeField]
     private Image currentImage;
+
     public string currentSceneName;
 
     public Text enterText;
