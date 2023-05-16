@@ -50,8 +50,8 @@ public class TSceneManager : TSingleton<TSceneManager>
         enterPercent.text = "0.0%";
         enterText.enabled = false;
         cg.alpha = 1.0f;
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
     }
 
     private string GetNameByKey(TSceneKey key)
