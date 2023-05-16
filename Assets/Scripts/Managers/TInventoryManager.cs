@@ -57,6 +57,7 @@ public class TInventoryManager : TSingleton<TInventoryManager>, IPointerMoveHand
         cg.interactable = false;
         cg.blocksRaycasts = false;
         ResetColor();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void ShowCanvas()
@@ -65,6 +66,7 @@ public class TInventoryManager : TSingleton<TInventoryManager>, IPointerMoveHand
         cg.interactable = true;
         cg.blocksRaycasts = true;
         ResetColor();
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void ResetColor()

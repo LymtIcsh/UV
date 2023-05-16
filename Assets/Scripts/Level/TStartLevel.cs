@@ -6,6 +6,11 @@ public class TStartLevel : MonoBehaviour
 {
     private void Awake()
     {
+
+    }
+
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Confined;
     }
 }

@@ -6,6 +6,11 @@ public class TWorldLevel : MonoBehaviour
 {
     private void Awake()
     {
+
+    }
+
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
