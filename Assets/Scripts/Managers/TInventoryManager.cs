@@ -27,6 +27,9 @@ public class TInventoryManager : TSingleton<TInventoryManager>, IPointerMoveHand
     [SerializeField]
     private Image _5;
 
+    [SerializeField]
+    private Image _6;
+
     private Color hide = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
     private Color show = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -34,6 +37,8 @@ public class TInventoryManager : TSingleton<TInventoryManager>, IPointerMoveHand
     private bool isShow = false;
 
     public Action<int> Choose;
+
+    private int currentPart = 0;
 
     protected override void Awake()
     {
@@ -77,44 +82,31 @@ public class TInventoryManager : TSingleton<TInventoryManager>, IPointerMoveHand
         _3.color = hide;
         _4.color = hide;
         _5.color = hide;
+        _6.color = hide;
     }
 
     public void OnPointerMove(PointerEventData e)
     {
         ResetColor();
-        int part = (int)e.position.GetAnlgeFromPoint(new Vector2(Screen.width / 2, Screen.height / 2)) / 60;
-        if (part == 0)
+        currentPart = RectTransformUtility.RectangleContainsScreenPoint(_0.rectTransform, e.position) ? 0 : ((int)e.position.GetAnlgeFromPoint(new Vector2(Screen.width / 2, Screen.height / 2)) / 60) + 1;
+        switch (currentPart)
         {
-            _0.color = show;
-        }
-        else if (part == 1)
-        {
-            _1.color = show;
-        }
-        else if (part == 2)
-        {
-            _2.color = show;
-        }
-        else if (part == 3)
-        {
-            _3.color = show;
-        }
-        else if (part == 4)
-        {
-            _4.color = show;
-        }
-        else if (part == 5)
-        {
-            _5.color = show;
+            case 0: _0.color = show; return;
+            case 1: _1.color = show; return;
+            case 2: _2.color = show; return;
+            case 3: _3.color = show; return;
+            case 4: _4.color = show; return;
+            case 5: _5.color = show; return;
+            case 6: _6.color = show; return;
+            default: _0.color = show; return;
         }
     }
 
     public void OnPointerClick(PointerEventData e)
     {
-        int part = (int)e.position.GetAnlgeFromPoint(new Vector2(Screen.width / 2, Screen.height / 2)) / 60;
         isShow = false;
         ResetCanvas();
-        Choose?.Invoke(part);
+        Choose?.Invoke(currentPart);
     }
 
     private void OnCompass(TInputManager.TInputKeyType type)
